@@ -1,6 +1,7 @@
 // Import the necessary Firebase modules
 import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
+import { getFirestore } from 'firebase/firestore';  // Firestore for storing image metadata
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,5 +18,8 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Storage
 const storage = getStorage(app);
+
+// Initialize Firestore
+const db = getFirestore(app);
 
 export { storage };

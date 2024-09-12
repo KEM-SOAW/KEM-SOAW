@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { storage } from '../firebaseConfig'; // Import the storage instance
+import { storage, db } from '../firebaseConfig';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
@@ -30,7 +31,7 @@ const UploadForm = () => {
     uploadTask.on(
       'state_changed',
       (snapshot) => {
-        // You can track the progress here if needed
+        // Optional: Track upload progress here
       },
       (error) => {
         setError('Upload failed: ' + error.message);
@@ -38,7 +39,17 @@ const UploadForm = () => {
       async () => {
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
         setUrl(downloadURL);
-        console.log('File available at', downloadURL);
+
+        // Store image metadata in Firestore
+        try {
+          const docRef = await addDoc(collection(db, 'images'), {
+            url: downloadURL,
+            createdAt: Timestamp.now(),
+          });
+          console.log('Image metadata stored with ID: ', docRef.id);
+        } catch (e) {
+          console.error('Error adding document: ', e);
+        }
       }
     );
   };
