@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './components/Navbar';  // Ensure this path is correct
+import Navbar from './components/Navbar';  // Ensure the path is correct
 
 function App() {
   return (
