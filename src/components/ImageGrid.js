@@ -6,9 +6,9 @@ const ImageGrid = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const q = query(collection(db, 'images'), orderBy('createdAt', 'desc'));
+    const q = query(collection(db, 'images'), orderBy('createdAt', 'desc'));  // Make sure 'db' is passed here
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      const imageList = snapshot.docs.map(doc => ({
+      const imageList = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
