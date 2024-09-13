@@ -6,7 +6,7 @@ const ImageGrid = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const q = query(collection(db, 'images'), orderBy('createdAt', 'desc'));  // Make sure 'db' is passed here
+    const q = query(collection(db, 'images'), orderBy('createdAt', 'desc')); // Ensure 'images' matches Firestore collection
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const imageList = snapshot.docs.map((doc) => ({
         id: doc.id,
