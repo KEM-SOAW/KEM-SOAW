@@ -1,27 +1,19 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Login';
-import AfterLogin from './components/AfterLogin';
-import Korant from './components/Korant';
-import Docs from './components/Docs';
-import Calendar from './components/Calendar';
-import Notes from './components/Notes';
-import FollowUp from './components/FollowUp';
+import AfterLogin from './components/AfterLogin';  // Ensure this component is created
+import Korant from './components/Korant';  // Your other components
 
 function App() {
   return (
     <Router>
       <div>
-        <h1>SOAW Cloud</h1>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/after-login" element={<AfterLogin />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/afterlogin" element={<AfterLogin />} />
           <Route path="/korant" element={<Korant />} />
-          <Route path="/docs" element={<Docs />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/follow-up" element={<FollowUp />} />
+          <Route path="/" element={<Navigate to="/afterlogin" />} /> {/* Redirect root to AfterLogin */}
         </Routes>
       </div>
     </Router>

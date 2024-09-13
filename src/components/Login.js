@@ -1,21 +1,21 @@
+// Login.js
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
-import './Login.css';  // Make sure to include this CSS
+import { useNavigate } from 'react-router-dom';  // Import navigation hook
+import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();  // Navigation instance
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log('User logged in');
-      navigate('/after-login'); // Redirect to AfterLogin page after successful login
+      navigate('/afterlogin');  // Redirect to AfterLogin page
     } catch (err) {
       setError(err.message);
     }
