@@ -1,0 +1,69 @@
+/* AfterLogin.css */
+.after-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+    color: #666;
+  }
+  
+  .section-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 400px;  /* This ensures that the buttons have a maximum width */
+  }
+  
+  .section-list li {
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-link {
+    text-decoration: none;
+    font-size: 1.25rem;
+    color: #fff;
+    background-color: #007BFF;
+    padding: 10px 0; /* This ensures consistent button height */
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding is included in width */
+    transition: background-color 0.3s;
+  }
+  
+  .section-link:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive styling for mobile */
+  @media (max-width: 768px) {
+    .section-list {
+      max-width: 300px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+  
