@@ -1,28 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
+// ImageGrid.js
+import React from 'react';
+import './ImageGrid.css';
 
 const ImageGrid = () => {
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    const q = query(collection(db, 'images'), orderBy('createdAt', 'desc')); // Ensure 'images' matches Firestore collection
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const imageList = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setImages(imageList);
-    });
-
-    return () => unsubscribe();
-  }, []);
+  // Temporary array of image URLs
+  const images = [
+    "https://via.placeholder.com/150",
+    "https://via.placeholder.com/150",
+    "https://via.placeholder.com/150",
+  ];
 
   return (
     <div className="image-grid">
-      {images.map((image) => (
-        <div key={image.id} className="image-item">
-          <img src={image.url} alt="Uploaded" />
+      {images.map((url, index) => (
+        <div key={index} className="image-item">
+          <img src={url} alt="Document" />
         </div>
       ))}
     </div>
