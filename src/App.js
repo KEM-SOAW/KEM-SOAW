@@ -1,17 +1,12 @@
 // App.js
 import React from 'react';
-import Navbar from './components/Navbar';
-import ImageGrid from './components/ImageGrid';
-import UploadForm from './components/UploadForm';
 
-const App = () => {
+function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <UploadForm />
-      <ImageGrid />
+    <div>
+      <h1>SOAW Cloud</h1>
     </div>
   );
-};
+}
 
 export default App;
