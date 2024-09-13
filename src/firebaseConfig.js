@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
@@ -14,7 +14,22 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+
+// Initialize Firebase Storage and get a reference to the service
 const storage = getStorage(app);
 
-export { auth, storage };
+// Helper function to track authentication state
+const monitorAuthState = (callback) => {
+  return onAuthStateChanged(auth, (user) => {
+    if (user) {
+      callback(user);
+    } else {
+      callback(null);
+    }
+  });
+};
+
+export { auth, storage, monitorAuthState };
