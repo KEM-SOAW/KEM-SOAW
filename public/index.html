@@ -1,49 +1,40 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>SOAW Cloud</title>
 
-    <!-- Add Google Fonts for a cleaner look -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Firebase SDKs -->
+    <script defer src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js"></script>
+    
+    <!-- Firebase Initialization -->
+    <script defer src="/__/firebase/init.js"></script>
 
-    <!-- Add a favicon for branding -->
-    <link rel="icon" href="path/to/favicon.ico" type="image/x-icon" />
-
-    <!-- Meta description for better SEO -->
-    <meta name="description" content="SOAW Cloud - Manage your documents, notes, and more in one place." />
-
-    <!-- Include basic styling -->
     <style>
-      body, html {
+      body {
+        background: #ECEFF1;
+        color: rgba(0, 0, 0, 0.87);
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-        font-family: 'Roboto', sans-serif;
-        background-color: #f4f4f9;
-        color: #333;
-        height: 100%;
-      }
-      h1, h2 {
-        margin: 0;
       }
       #root {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
       }
     </style>
   </head>
   <body>
-    <!-- React will render the app inside this root div -->
-    <div id="root"></div> 
+    <div id="root"></div> <!-- This is where your React app will render -->
+
+    <!-- Add your compiled React JavaScript here -->
+    <script src="/static/js/bundle.js"></script>
+    <script src="/static/js/0.chunk.js"></script>
+    <script src="/static/js/main.chunk.js"></script>
+    
   </body>
 </html>

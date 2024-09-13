@@ -1,27 +1,33 @@
-import React from 'react';
+// NavBar.js
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { auth } from '../firebaseConfig';
 import { signOut } from 'firebase/auth';
+import './NavBar.css'; // Ensure your CSS is imported
 
-const Navbar = () => {
-  const handleLogout = () => {
-    signOut(auth).then(() => {
-      alert('Logged out');
-    });
+function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleLogOut = async () => {
+    await signOut(auth);
+    window.location.reload(); // Redirects after sign out
   };
 
   return (
     <nav className="navbar">
-      <div className="logo">
-        <h1>SOAW Cloud</h1>
-      </div>
-      <ul className="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/upload">Upload</a></li>
-        <li><a href="/about">About</a></li>
-        <li><button onClick={handleLogout}>Logout</button></li>
+      <div className="nav-logo">SOAW</div>
+      <ul className={`nav-links ${isOpen ? "open" : ""}`}>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/account">Account</Link></li>
+        <li><button onClick={handleLogOut}>Log Off</button></li>
       </ul>
+      <div className={`burger ${isOpen ? "toggle" : ""}`} onClick={() => setIsOpen(!isOpen)}>
+        <div className="line1"></div>
+        <div className="line2"></div>
+        <div className="line3"></div>
+      </div>
     </nav>
   );
-};
+}
 
-export default Navbar;
+export default NavBar;
