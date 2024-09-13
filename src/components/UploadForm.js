@@ -1,14 +1,8 @@
-// UploadForm.js
 import React from 'react';
-import './UploadForm.css';
+import './UploadForm.css';  // Ensure the correct path to the CSS file
 
 const UploadForm = () => {
-  return (
-    <form className="upload-form">
-      <input type="file" />
-      <button type="submit">Upload</button>
-    </form>
-  );
+  // your existing code
 };
 
 export default UploadForm;
